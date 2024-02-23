@@ -17,8 +17,23 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    sorted_sides = sorted([a, b, c])
+    if sorted_sides[0] + sorted_sides[1] <= sorted_sides[2]:
+        raise TriangleError()
+
+    sides = set([a, b, c])
+    for side in sides:
+        if side <= 0:
+            raise TriangleError()
+
+    match len(sides):
+        case 1:
+            return 'equilateral'
+        case 2:
+            return 'isosceles'
+        case _:
+            return 'scalene'
+
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):
